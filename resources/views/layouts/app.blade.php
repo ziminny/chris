@@ -14,13 +14,17 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site/all.css')}}">
-      
+    @cannot('inactive-gate', User::class)
+        @include('messages.styles.message-user-inactive')
+    @endcannot
         @livewireStyles
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
     </head>
     <body class="font-sans antialiased">
+
+        @can('inactive-gate', User::class)
         <div class="min-h-screen bg-gray-100">
             @livewire('navigation-dropdown')
 
@@ -39,7 +43,30 @@
 
         @stack('modals')
 
+        @else 
+            @include('messages.message-user-inactive')
+           
+            <script type="text/javascript">
+
+        const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
+
+                fetch("{{route('logout')}}", {
+                    headers: {                      
+                        "X-CSRF-Token": csrfToken
+                        },
+                        method:"POST",
+
+                }).then( res => {
+                    console.log(res);
+                })
+            </script>
+        @endcan
+
+
+
+
         @livewireScripts
     
+
     </body>
 </html>

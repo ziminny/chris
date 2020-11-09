@@ -536,23 +536,39 @@ small.message-error {
   align-items: center;
   width: 100%;
   justify-content: space-between;
+  margin-top: 10px;
 }
 
-.input1-edit,
-.input2-edit,
-.input3-edit {
-  margin: 0 10px;
-}
-
-.radio-buttons-permissions-edit-cols {
+.radio-buttons-permissions-edit .radio-buttons-permissions-edit-cols {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  width: 130px;
+  border-radius: 30px;
+  padding: 0 8px;
+  border-bottom: 1px solid rgba(45, 30, 47, 0.2);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.radio-buttons-permissions-edit .input1-edit,
+.radio-buttons-permissions-edit .input2-edit,
+.radio-buttons-permissions-edit .input3-edit {
+  margin: 0 5px;
+  cursor: pointer;
 }
 
 .user-update-success {
   margin-right: 10px;
   opacity: 0.7;
   display: none;
+}
+
+@media screen and (max-width: 376px) {
+  .radio-buttons-permissions-edit {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 90px;
+  }
 }
 
 @-webkit-keyframes opacityUpdateUserSuccessShow {

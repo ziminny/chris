@@ -21,35 +21,39 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
     
-    justify-content: space-between
-}
-.input1-edit , .input2-edit , .input3-edit {
-    margin: 0 10px;
-}
+    .radio-buttons-permissions-edit-cols {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 130px;
+        border-radius: 30px;
+        padding:0 8px;
+        border-bottom: 1px solid rgba($color: #2D1E2F, $alpha: 0.2);
+        box-shadow: 0 5px 5px rgba($color: #000000, $alpha: 0.2);     
+    }
 
-.radio-buttons-permissions-edit-cols {
-    display: flex;
-    align-items: center;
-    
-    
+    .input1-edit , .input2-edit , .input3-edit {
+        margin: 0 5px;
+        cursor: pointer;
+    }
 }
-.radio-buttons-permissions-edit-cols-salesman {
-
-}
-.radio-buttons-permissions-edit-cols-admin {
-
-}
-.radio-buttons-permissions-edit-cols-inactive {
-
-}
-
 
 .user-update-success {
     margin-right: 10px; 
     opacity:0.7; 
     display: none;
     
+}
+
+@media screen and (max-width:376px) {
+    .radio-buttons-permissions-edit {   
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: 90px;
+    }
 }
 @keyframes opacityUpdateUserSuccessShow {
     from {

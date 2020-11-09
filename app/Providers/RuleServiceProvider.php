@@ -28,8 +28,12 @@ class RuleServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Gate::define("is-admin" , function(User $user) {
+        Gate::define("is-admin-gate" , function(User $user) {
             return UserRole::userContainRole($user)->permission === "Administrador";
+        });
+
+        Gate::define("inactive-gate",function(User $user) {
+            return UserRole::userContainRole($user)->permission !== "Inativo";
         });
 
 

@@ -9,7 +9,7 @@
 
     <x-slot name="content">
         <div class="max-w-xl text-sm text-gray-600">
-            {{ __('Depois que essa for excluída, todos os recursos e dados serão excluídos permanentemente.') }}
+            {{ __('Depois que essa conta for excluída, todos os recursos e dados serão excluídos permanentemente.') }}
         </div>
 
         <div class="mt-5">
