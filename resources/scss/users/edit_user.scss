@@ -1,0 +1,69 @@
+
+.field-permission-edit {
+            display:flex;
+            flex-direction: column;
+            
+        .select-permission-edit {
+            border: 1px solid rgba($color: #ccc, $alpha: 0.9);
+            border-radius: 5px;
+            width: 70%;
+            background-color: white;
+            padding:1px;
+            margin: 3px 0;
+        }
+
+}
+
+
+
+.radio-buttons-permissions-edit {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    
+    justify-content: space-between
+}
+.input1-edit , .input2-edit , .input3-edit {
+    margin: 0 10px;
+}
+
+.radio-buttons-permissions-edit-cols {
+    display: flex;
+    align-items: center;
+    
+    
+}
+.radio-buttons-permissions-edit-cols-salesman {
+
+}
+.radio-buttons-permissions-edit-cols-admin {
+
+}
+.radio-buttons-permissions-edit-cols-inactive {
+
+}
+
+
+.user-update-success {
+    margin-right: 10px; 
+    opacity:0.7; 
+    display: none;
+    
+}
+@keyframes opacityUpdateUserSuccessShow {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@keyframes opacityUpdateUserSuccessHide {
+    from {
+        opacity:1;
+    }
+    to {
+        opacity:0;
+    }
+}

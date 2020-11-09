@@ -1,0 +1,131 @@
+
+.home-container {
+    
+    padding-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    width: 95vw;
+   
+    
+    
+    .home-card {
+            
+            flex: 1;
+            margin: 15px;
+            padding: 20px 0;
+          
+
+            background-color: #FFF;
+            border-radius: 30px;
+            min-width: 250px;
+            min-height: 470px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 20px 20px rgba($color: #000000, $alpha: 0.2) , 0 0 50px rgba($color: #000000, $alpha: 0.2);
+           
+
+            
+        .home-card-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+            span:first-child {
+                font-size: 40px;
+                color: #7C8483 ;
+                opacity: 0.8;
+            }
+            span:last-child{
+                font-size: 25px;
+                color: #7C8483 ;
+                opacity: 0.8; 
+                font-weight: bold;
+            }
+        }
+
+    }
+
+    .home-card-body {
+           padding: 15px;
+           text-align: center;
+           color: #7C8483 ;  
+           display: flex;
+           height: 230px;
+           width: 100%;
+          
+           flex-direction: column;
+           justify-content: space-between;
+           align-items: center;
+
+           .home-body-img {
+        
+                width: 130px;
+                height: 130px;
+           }
+
+    }
+
+    .home-card-footer {
+        text-align: center;
+       
+        box-shadow: 0 2px 5px rgba($color: #000000, $alpha: 0.4);
+        border-radius: 30px;
+        width: 150px;
+
+
+        .icon-btn-footer {
+            font-size: 13px;
+        }
+
+         button {
+            position: relative;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            width: 100%;
+            color: #7C8483 ;
+
+            &:focus {
+                outline: none;
+
+            }
+        }
+    }
+    .home-card-footer:hover {
+        box-shadow: 0 2px 5px rgba($color: #000000, $alpha: 0.5);
+    }
+
+ 
+
+}
+
+.img-chart {
+    background-image: url("../../../public/imgs/cards-home/chart.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.img-sale {
+    background-image: url("../../../public/imgs/cards-home/sale.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.img-user {
+    background-image: url("../../../public/imgs/cards-home/user.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.img-product {
+    background-image: url("../../../public/imgs/cards-home/product.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}

@@ -1,0 +1,97 @@
+
+
+
+// MOBILE
+.show-users-mobile-search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+
+    
+    form.form-search-mobile {
+        display: flex;
+        width: 80%;
+       
+        .show-users-img-close-mobile {
+
+            position: absolute;
+            border-radius: 30px;
+            margin-top: 10px;
+            margin-left: 10px;
+            
+            img {
+                height: 20px;
+                 opacity: 0.7;
+                background-position: center;
+                
+
+            }
+        }
+            
+            .show-users-input-search-mobile{
+                width: 100%;
+                input {
+                    
+                   border-radius: 10px;
+                   height: 40px;
+                   width: 100%;
+                   box-shadow: 0 10px 10px rgba($color: #000000, $alpha: 0.2) ,0 40px 40px rgba($color: #000000, $alpha: 0.1);
+                   border: none;
+                   padding-left: 50px;
+                  
+                   
+                       &:focus {
+                           outline: none;
+                       } 
+                }
+            
+
+        }
+
+    }
+    .search-user-a {
+        width: 17%;
+        //height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+
+        .search-user-btn {
+            //box-shadow: 0 20px 20px rgba($color: #000000, $alpha: 0.2);
+            
+      
+            border-radius: 10px;
+            width: 100%;
+            height: 40px;
+            color:white;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            //background: #197BBD;
+            background-image: linear-gradient(90deg, #197BBD 0%, #1d76b1 35%, #186fa8 100%);
+            box-shadow: 0 5px 5px rgba($color: #000000, $alpha: 0.3) , 0 10px 10px rgba($color: #000000, $alpha: 0.3);
+            border-bottom: 2px solid rgba($color: #000000, $alpha: 0.2);
+            font-size: 17px;
+            display: flex;
+            justify-content: center;
+                &:focus {
+                    outline: none;
+                }
+                &:hover {
+                    box-shadow: 0 5px 5px rgba($color: #000000, $alpha: 0.5);
+                }
+            i {
+
+               
+
+            }
+            span {
+                margin-left: 10px;
+            }
+
+        }
+    }
+}

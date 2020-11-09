@@ -1,0 +1,89 @@
+.m-title-welcome {
+  font-size: 40px;
+  color: dimgray;
+  margin-left: 19px;
+}
+
+@media screen and (max-width: 600px) {
+  .m-title-welcome {
+    text-align: center;
+    margin-left: 0;
+  }
+}
+
+.m-icon-title {
+  color: darkslategray;
+}
+
+@media screen and (max-width: 600px) {
+  .m-title-welcome {
+    font-size: 30px;
+    height: 60px;
+    width: 100vw;
+  }
+}
+
+.m-title-body {
+  width: 800px;
+  height: 500px;
+  background-image: url(/images/description-image.jpg?36ac034a22118a68b30965916e25998b);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.m-title-body p {
+  text-align: right;
+  width: 300px;
+}
+
+.m-title-body h2,
+.m-title-body p {
+  margin-right: 40px;
+}
+
+@media screen and (max-width: 900px) {
+  .m-title-body {
+    width: 680px;
+    height: 420px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .m-title-body {
+    width: 585px;
+    height: 380px;
+    background-size: cover;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .m-title-body {
+    margin: 0 auto;
+    width: 80%;
+    height: auto;
+    padding: 0;
+    background-size: cover;
+  }
+
+  .m-title-body h2 {
+    margin-right: 20px;
+  }
+
+  .m-title-body p {
+    font-size: 14px;
+    width: 150px;
+    margin-right: 20px;
+  }
+}
+
+footer {
+  width: 100%;
+  margin: 15px 0;
+  text-align: center;
+}
+

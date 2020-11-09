@@ -1,0 +1,35 @@
+.form-create-new-user {
+    background-color: white;
+    padding:30px;
+    border-radius:10px;
+    width:90%
+}
+small.message-error {
+    color:#E02424;
+}
+.field-permission-create {
+            display:flex;
+            flex-direction: column;
+            
+        .select-permission-create {
+            border: 1px solid rgba($color: #ccc, $alpha: 0.9);
+            border-radius: 5px;
+            width: 30%;
+            background-color: white;
+            padding:1px;
+            margin: 3px 0;
+            &:focus {
+                outline: none;
+            }
+        }
+
+}
+
+@media screen and (max-width:800px) {
+
+    .field-permission-create {       
+        .select-permission-create {
+            width: 50%;
+        }
+    }
+}

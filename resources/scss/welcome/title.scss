@@ -1,0 +1,27 @@
+.m-title-welcome {
+    font-size: 40px;
+    color: dimgray;
+    margin-left: 19px;
+}
+
+@media screen and (max-width:600px) {
+
+    .m-title-welcome {
+        text-align: center;
+        margin-left:0;
+    }
+
+}
+
+.m-icon-title {
+    color: darkslategray;
+}
+
+@media screen and (max-width:600px) {
+
+    .m-title-welcome {
+        font-size: 30px;
+        height: 60px;
+        width: 100vw;
+    }
+}
