@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->float("sale_price");
             $table->float("cost_price");
             $table->date("date_of_sale");
-            $table->float("");
+           
             $table->timestamps();
         });
     }
