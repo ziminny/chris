@@ -1,0 +1,219 @@
+
+.container-products-dynamic { 
+    display: flex;
+    flex-wrap: wrap;
+    width: 95%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 5px 2px  rgba($color: #000000, $alpha: 0.1) ,0px 0px 5px 3px  rgba($color: #333232, $alpha: 0.1);
+  
+
+    .product-card{
+        flex: 1;
+        display: flex;
+        min-height: 160px;
+        min-width: 320px;
+        margin: 10px;
+        border: 1px solid rgba($color: #ccc, $alpha: 0.7);
+        box-shadow: 0 10px 10px rgba($color: #000000, $alpha: 0.1);
+        background-color: #F4F5F7;
+        border-radius: 5px;
+        width: 100%;
+
+        .products-card-left {
+           
+            width: 40%;
+            border-right: 1px solid rgba($color: #ccc, $alpha: 0.5);
+            background-image: url("../../../public/imgs/products/card.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+      
+
+        .products-card-right {
+         
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 5px;
+                .product-title {
+                    font-size: 15px;
+                    font-weight: 600;
+                    &::after{
+                        content: '';
+                        width: 70%;
+                        height: 1px;
+                        background-color: rgba($color: rgb(173, 170, 170), $alpha: 0.8);
+                 
+                        display: block;
+                        margin-bottom: 4px;
+
+                    }
+                    
+                }
+                .product-body {
+                    display: flex;
+                    flex-wrap: wrap;
+                    font-size: 13px;
+                    justify-content: space-between;
+                    
+                    span:nth-child(1) {
+                       
+                        span:nth-child(2) {
+                     
+                            background-color: rgba($color: #AFD0D6, $alpha: 0.5);
+                            border-radius: 5px;
+                            padding: 0 3px;
+                        }
+                    }
+                
+                    span:nth-child(2) {
+                       
+                        span:nth-child(2) {
+                            background-color: rgba($color: #AFD0D6, $alpha: 0.5);
+                            border-radius: 5px;
+                            padding: 0 3px;
+                        }
+                    
+                    }
+                    span:nth-child(3) {
+                       
+                        span:nth-child(2) {
+                            background-color: #F7E8A4;
+                            background-color: rgba($color: #AFD0D6, $alpha: 0.5);
+                            border-radius: 5px;
+                            padding: 0 3px;
+                        }
+                    }
+                
+                    span:nth-child(4) {
+                       
+                        span:nth-child(2) {
+                            background-color: rgba($color: #AFD0D6, $alpha: 0.5);
+                            border-radius: 5px;
+                            padding: 0 3px;
+                        }
+                    }
+                    span:nth-child(5) {
+                       
+                        span:nth-child(2) {
+                            background-color: rgba($color: #AFD0D6, $alpha: 0.5);
+                            border-radius: 5px;
+                            padding: 0 3px;
+                            width: auto;
+                        }
+                    }
+                        
+                    
+                    span {
+                        flex: 1;
+                        padding: 1px 2px;
+                        color: #716A5C;
+                        display: flex;
+
+
+                        span:last-child {
+                            color: black;
+                            font-size: 12px;
+                          
+                               
+                            
+         
+                        }
+                    }
+
+                }
+                .product-footer {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;               
+                    flex-wrap: wrap;
+
+                    span {
+                        background-color: #F1E3E4;
+                        border-radius: 20px;
+                        margin-bottom: 5px;
+                        color: #01161E;
+                        font-size: 12px;
+                        padding: 0 10px;
+                        letter-spacing: 0.5px;
+                    
+                        &:nth-child(2n) {
+                            padding: 0 2px;
+                            background-color: #CCBCBC ;
+                            color: #01161E;
+                            
+                        }
+                    }
+                }   
+        }
+}
+}
+
+
+
+//temporario
+.products-card-left-1 {
+           
+    width: 40%;
+    border-right: 1px solid rgba($color: #FECDAA, $alpha: 0.5);
+    background-image: url("../../../public/imgs/products/card.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.products-card-left-2 {
+   
+    width: 40%;
+    border-right: 1px solid rgba($color: #ccc, $alpha: 0.5);
+    background-image: url("../../../public/imgs/products/tenis.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.products-card-left-3 {
+   
+    width: 40%;
+    border-right: 1px solid rgba($color: #ccc, $alpha: 0.5);
+    background-image: url("../../../public/imgs/products/calca.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media screen and (max-width:356px) {
+    
+
+    .container-products-dynamic { 
+       
+        .product-card{
+            min-width: 220px;
+            flex-direction: column;
+
+
+            .products-card-left, .products-card-left-3 , .products-card-left-1 , .products-card-left-2  {
+           
+              width: 100%;
+              height: 100px;
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size:cover; 
+           
+
+            
+        }
+      
+
+        .products-card-right {
+            
+            width: 100%;
+            height: 200px;
+        }
+    }
+    }
+}

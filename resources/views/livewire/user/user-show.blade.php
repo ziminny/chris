@@ -1,6 +1,8 @@
 @extends('layouts.base')
 
-@section('title',"Editar Perfil")
+@section('title')
+ {{Breadcrumbs::render("users.edit",$user)}}
+@endsection
     
 
 @section('content-all')
@@ -9,7 +11,7 @@
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updateProfileInformation()))
             @livewire('user.user-edit',['user' => $user])
-
+             
             <x-jet-section-border />
         @endif
 

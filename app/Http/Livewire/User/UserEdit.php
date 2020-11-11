@@ -17,7 +17,6 @@ class UserEdit extends Component
     public User $user;
     public $name;
     public $email;
-    public $message;
     public $permission;
     public $datas;
     public $success = true;
@@ -44,13 +43,12 @@ class UserEdit extends Component
     }
 
 
-    public function updateProfileInformation() :void
-    {   
-        $this->message = "";
-        $this->update();  
-  
-        if($this->validate($this->ruless())) 
-            $this->message = "Salvo.";        
+    public function updateProfileInformation() 
+    {     
+            $this->update(); 
+            
+            session()->flash("message","Usuário editado com sucesso !");
+            return redirect()->to('/users');
     }
 
     public function press() :void

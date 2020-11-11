@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\FirstAccess;
+use App\Http\Livewire\Product\HomeProducts;
 use App\Http\Livewire\User\UserFormCreate;
 use App\Http\Livewire\User\UserList;
 use App\Http\Livewire\User\UserShow;
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    app(FirstAccess::class)->makeFirstUser();
+    (new FirstAccess)->makeFirstUser();
     return view('welcome');
 });
 
@@ -28,19 +29,28 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-//Route::group(['middleware' => 'inactive'], function () {
+Route::group(['middleware' => 'inactive'], function () {
     
-    // Users Route
-Route::group(
-    ['middleware' => ['auth','is-admin'] , // Middleware ,Só o admin pode acecssar a tela de usuarios
-        'prefix' => 'users' ,  // Prefixo da url
-        'as' => 'users.'       // Name apelido
-    ], function () {
-    Route::get('/', [UserList::class,"index"])->name("index");
-    Route::get('{user}/show', [UserShow::class,'show'])->name("show");
-    Route::get("create",[UserFormCreate::class,"create"])->name("create");
+        // Users Route
+    Route::group(
+        ['middleware' => ['auth','is-admin'] , // Middleware ,Só o admin pode acecssar a tela de usuarios
+            'prefix' => 'users' ,  // Prefixo da url
+            'as' => 'users.'       // Name apelido
+        ], function () {
+                Route::get('/', [UserList::class,"index"])->name("index");
+                Route::get('{user}/show', [UserShow::class,'show'])->name("show");
+                Route::get("create",[UserFormCreate::class,"create"])->name("create");
+
+    });
+
+    Route::group(
+        ['middleware' => ['auth'] ,
+         'prefix' => 'products',
+         'as' => 'products.'
+        ], function () {
+              Route::get('/',[HomeProducts::class,"index"])->name("index");
+            
+    });
 
 });
-
-//});
 

@@ -26,4 +26,9 @@
 
             </div>
 
+            <script type="text/javascript">
+                let backgroundBreadcrumbs = document.querySelector(".bg-gray-300");
+                backgroundBreadcrumbs.classList.remove("bg-gray-300")
+            </script>
+
 </x-app-layout>

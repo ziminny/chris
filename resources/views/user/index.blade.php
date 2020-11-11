@@ -1,5 +1,7 @@
 @extends('layouts.base')
-@section('title',"Lista de usuários")
+@section('title')
+{{Breadcrumbs::render("users")}}
+@endsection
 
     
 

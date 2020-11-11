@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->text("description");
             $table->float("sale_price");
             $table->float("cost_price");
-            $table->date("date_of_sale");
-            $table->float("");
+            $table->unsignedBigInteger("user_id");
+            $table->foreign("user_id")->references("id")->on("users");
             $table->timestamps();
         });
     }

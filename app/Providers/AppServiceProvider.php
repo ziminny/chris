@@ -14,9 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(FirstAccess::class, function() {
-            return new FirstAccess;
-        });
+        // $this->app->bind(FirstAccess::class, function() {
+        //     return new FirstAccess;
+        // });
     }
 
     /**

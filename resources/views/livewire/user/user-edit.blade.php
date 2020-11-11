@@ -15,7 +15,7 @@
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
             <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
 
-
+                    
 
                 <x-jet-input-error for="photo" class="mt-2" />
             </div>
@@ -74,9 +74,9 @@
 
     <x-slot name="actions">
 
-        <span class="user-update-success">
+        {{-- <span class="user-update-success">
             {{$message}}
-        </span>
+        </span> --}}
 
         <x-jet-button wire:loading.attr="disabled">
             {{ __('Salvar') }}
@@ -84,7 +84,7 @@
     </x-slot>
 </x-jet-form-section>
 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
 
         let updateSuccess = document.querySelector(".user-update-success");
         let formUserUpdate = document.querySelectorAll("form")
@@ -102,5 +102,5 @@
        })
 
 
-</script>
+</script> --}}
 

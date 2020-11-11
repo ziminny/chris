@@ -19,7 +19,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Team::class => TeamPolicy::class,
-        User::class => VerifyEmptyRelationUserAndRulePolicy::class
+        // User::class => VerifyEmptyRelationUserAndRulePolicy::class
         
     ];
 
@@ -32,7 +32,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('teste',[VerifyEmptyRelationUserAndRulePolicy::class , 'verify']);
+        //Gate::define('teste',[VerifyEmptyRelationUserAndRulePolicy::class , 'verify']);
 
  
     }

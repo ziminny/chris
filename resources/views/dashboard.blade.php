@@ -1,13 +1,15 @@
 
 
 @extends('layouts.base')
-@section('title',"Gerênciamento de estoque")
+@section('title')
+ {{ Breadcrumbs::render("dashboard")}}
+@endsection
 @section('content-all')
         @can('is-admin-gate', User::class)
             @livewire('cards',['title' => 'Usuários','icon' => 'fas fa-user','body' => 'Lista detalhada de usuários e premissões de acesso.','img' => 'user' , 'route'=>'users.index'])
         @endcan
     
-    @livewire('cards',['title' => 'Produtos','icon' => 'fab fa-product-hunt','body' => 'Gerêncie seus produtos.','img' => 'product', 'route'=>'product.index'])
+    @livewire('cards',['title' => 'Produtos','icon' => 'fab fa-product-hunt','body' => 'Gerêncie seus produtos e/ou edite algumas categiorias.','img' => 'product', 'route'=>'products.index'])
     @livewire('cards',['title' => 'Venda','icon' => 'far fa-money-bill-alt','body' => 'Efetue uma venda.','img' => 'sale', 'route'=>'sale.index'])
    
         @can('is-admin-gate', User::class)

@@ -1,7 +1,9 @@
 
 
 @extends('layouts.base')
-@section('title',"Adicionar usuário")
+@section('title')
+{{Breadcrumbs::render("users.create")}}
+@endsection
 
     
 

@@ -7,13 +7,6 @@ use Livewire\Component;
 
 class UserShow extends Component
 {
-    public User $user;
-
-    // public function mount($user)
-    // {
-    //     $this->user = $user;
-       
-    // }
 
 
     public function show(User $user)
