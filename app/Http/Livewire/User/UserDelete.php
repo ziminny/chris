@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\User;
 
 use App\Helpers\TraitLastUserAdmin;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\Rule;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -78,6 +80,12 @@ class UserDelete extends Component
            
             DB::transaction(function () use($deleter) {
 
+                    DB::table("categories")->where('user_id',$this->user->id)->update([
+                        'user_id' => null
+                    ]);
+                    DB::table("products")->where('user_id',$this->user->id)->update([
+                        'user_id' => null
+                    ]);
                     Rule::destroy([
                         'user_id' => $this->user->id
                     ]);

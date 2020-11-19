@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire\Product;
 
+use App\Models\Category;
+use App\Models\Product;
 use Livewire\Component;
 
 class CardsTop extends Component
@@ -14,12 +16,12 @@ class CardsTop extends Component
         $items = [
             [
               'title' => 'Categoria',
-              'total' => 15,
+              'total' => Category::all()->count(),
               'icon' => 'fas fa-list'
             ],
             [
                 'title' => 'Produtos',
-                'total' => 132,
+                'total' => Product::all()->count(),
                 'icon' => 'fab fa-product-hunt'
             ],
             [

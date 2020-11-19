@@ -48,9 +48,7 @@
      
 
     <script type="text/javascript">
-
     
-
             let deleteSuccessUser = document.querySelector(".message-delete-success");
 
             var htmlstring = deleteSuccessUser.innerHTML;

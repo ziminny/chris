@@ -5,17 +5,24 @@ namespace App\Helpers;
 use App\Models\Rule;
 use App\Models\User;
 use DB;
+use DomainException;
 use Illuminate\Support\Facades\Hash;
+use phpDocumentor\Reflection\DocBlock\Tags\Throws;
 
 class FirstAccess 
 {
     private User $user;
 
 
-    public function makeFirstUser()
-    {
-        if($this->userExists())
-            $this->query();
+    public function makeFirstUser($object)
+    { 
+        extract($object);
+        if($this->userExists()) {
+            $this->query($name,$email,$password);
+            return;
+        }
+          throw new DomainException("Já existe um usuario no bando de dados , impossivel adicionar mais um");
+
     }
   
 
@@ -24,20 +31,20 @@ class FirstAccess
         return User::all()->count() === 0;
     }
 
-    private function query()
+    private function query($name,$email,$password)
     {
-        DB::transaction(function () {       
-            $this->createUser();
+        DB::transaction(function () use($name,$email,$password) {       
+            $this->createUser($name,$email,$password);
             $this->createRule();
         });
     }
 
-    private function createUser()
+    private function createUser($name,$email,$password)
     {
         $this->user = User::create([
-            'name' => 'Primeiro usuário',
-            'password' => Hash::make("12345678"),
-            'email' => 'teste@hotmail.com'
+            'name' => $name,
+            'password' => Hash::make($password),
+            'email' => $email
         ]);
     }
 

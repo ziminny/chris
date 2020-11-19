@@ -2,10 +2,12 @@
 
 use App\Helpers\FirstAccess;
 use App\Http\Livewire\Product\HomeProducts;
+use App\Http\Livewire\Product\ProductShow;
+use App\Http\Livewire\Product\ShowUserProduct;
 use App\Http\Livewire\User\UserFormCreate;
 use App\Http\Livewire\User\UserList;
 use App\Http\Livewire\User\UserShow;
-
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +22,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    (new FirstAccess)->makeFirstUser();
     return view('welcome');
 });
 
@@ -49,8 +50,16 @@ Route::group(['middleware' => 'inactive'], function () {
          'as' => 'products.'
         ], function () {
               Route::get('/',[HomeProducts::class,"index"])->name("index");
+              Route::get("{product}/show",[ProductShow::class,'show'])->name("show");
+        
             
     });
 
 });
+
+// Route::get("/teste",function() {
+
+//     $teste = Artisan::call('make:new-user');
+//     dd($teste);
+// });
 

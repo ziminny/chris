@@ -12,7 +12,6 @@ class UserSearch extends Component
         'teste' => 'search'
     ];
     
-    
     public function search()
     {
        $this->emit("sch",$this->search);

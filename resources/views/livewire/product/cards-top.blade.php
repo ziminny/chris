@@ -22,36 +22,48 @@
                 let cards = document.querySelectorAll(".category-product-main-painel");
                 let icon = document.querySelector(".add-new-left-col");
                 let divRight = [];
-                let iconInner = []
+                let iconInner = [];
+
 
                     for (let index = 0; index < cards.length; index++) {
                         
-                                 divRight[index] = document.querySelector(`.line-right-card-${index+1}`);
-                                 iconInner[index] = document.querySelector(`.line-right-card-${index+1} .card-icon-info`);
+                            divRight[index] = document.querySelector(`.line-right-card-${index+1}`);
+                            iconInner[index] = document.querySelector(`.line-right-card-${index+1} .card-icon-info`);
 
-                            cards[index].addEventListener("click", function() {
+                                 cards[index].addEventListener("click", () => {
+                                     
+                                        resetElements(divRight,iconInner , index)
+                                        divRight[index].style.animation = "div-rigth 0.5s ease-in-out forwards"
+                                        iconInner[index].style.animation = "icon-info-show 0.6s ease-out forwards"
+                                 })
+   
+                    }
+            // Por padrão começa com a categoria de produtos        
+            divRight[1].style.animation = "div-rigth 0.5s ease-in-out forwards"
+            iconInner[1].style.animation = "icon-info-show 0.6s ease-out forwards"
+    // Funçao para quando clicar em uma categoria voltar só a que esta aberta                
+    let resetElements = (div, icon , index) => {
 
-                            divRight[index].style.animation = ""
-                            iconInner[index].style.animation = ""
-                            divRight[index].style.animation = "div-rigth 0.5s ease-in-out forwards"
-                            iconInner[index].style.animation = "icon-info-show 0.6s ease-out forwards"
-                            let newArrayIconInner = iconInner.slice(index,1)
-                            let newArrayDivRight = divRight.slice(index,1)
+                icon.filter((element) => {
+                        return element != iconInner[index];
+                    }).map((element , i)=> {
+                    
+                            if(element.style.animation != "")  {
+                                element.style.animation = ""
+                                element.style.animation = "icon-info-show-reverse 0.6s ease-out forwards"  
+                                                         
+                                }
+                    });
 
-                            newArrayDivRight[index].style.animation = ""
-                            newArrayIconInner[index].style.animation = ""
-                            // newArrayDivRight[index].style.animation = "div-rigth-reverse 0.5s ease-in-out reverse forwards"
-                            // newArrayIconInner[index].style.animation = "icon-info-show-reverse 0.6s ease-out forwards"  
-                            })
-
-                            // cards[index].addEventListener("mouseleave", function() {
-                            // divRight.style.animation = "div-rigth-reverse 0.5s ease-in-out reverse forwards"                        
-                            // iconInner.style.animation = "icon-info-show-reverse 0.6s ease-out forwards"   
-                            // })
-
-                                cards[index].addEventListener("mousemove", function(e) {
-        
-                            })
-                        
-                    }            
+                div.filter((element) => {
+                        return element != divRight[index];
+                    }).map((element , i)=> {
+                    
+                            if(element.style.animation != "")  {
+                                element.style.animation = ""
+                                element.style.animation = "div-rigth-reverse 0.5s ease-in-out reverse forwards"                      
+                            }
+                       });
+    } 
+         
     </script>

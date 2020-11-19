@@ -2,8 +2,6 @@
 
 namespace App\Http\Livewire\User;
 
-use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -26,8 +24,6 @@ class UserTable extends Component
     {
         $this->search = $arg;
     }
-
-
 
     public function render()
     {

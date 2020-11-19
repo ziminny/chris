@@ -33,3 +33,9 @@ Breadcrumbs::for('products', function ($trail) {
     $trail->parent('dashboard');
     $trail->push('Produtos', route('products.index'));
 });
+
+// Controle > Usuários  [name] > [show]
+Breadcrumbs::for('products.show', function ($trail,$product) {
+    $trail->parent('products');
+    $trail->push($product->name,route('products.show', ['product' => $product]));
+});
