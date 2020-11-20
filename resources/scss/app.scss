@@ -1,7 +1,14 @@
+// Variables
+@import "variables";
+// Mixins
 @import "mixins";
 // HOME
 @import "home/app";
 //Show USERS
-@import "users/app";
+@import "user/app";
 // Product category
-@import "product_category/app";
+@import "product/app";
+// Categories
+@import "category/app";
+// Globals
+@import "globals/app";

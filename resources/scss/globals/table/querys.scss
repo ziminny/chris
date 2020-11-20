@@ -1,0 +1,35 @@
+@media (min-height:800px) {
+    .table-show {
+        table {
+            thead {
+                tr {
+                    height: 65px;
+                    th  .home-th-gambi {
+                        height:55px; 
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    height: 65px;
+                    td  .home-th-gambi {
+                        height: 55px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .hide-768 {
+        display: none;
+    }
+}
+
+@media (max-width:576px) {
+    .hide-576 {
+        display: none;
+    }
+}
+

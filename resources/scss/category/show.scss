@@ -1,0 +1,26 @@
+.container-categories-dynamic {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-delete {
+    @include btn($btnBackgroundDelete);
+    margin-right: 10px;
+
+}
+.no-category-delete {
+    @include btn($btnBackgroundDelete);  
+    margin-right: 10px;
+    opacity: 0.5;
+    cursor: text;
+}
+
+.category-edit {
+    @include btn($btnBackgroundEdit);
+
+}
+
+.icon-delete , .icon-edit {
+    font-size: 13px;
+}
+

@@ -1,5 +1,5 @@
 
-<div class="table-show-users">
+<div class="table-show">
 
 
     @include('messages.success-delete')
@@ -8,10 +8,10 @@
     <table>
         <thead>
     <tr>
-    <th><div class="home-th-gambi"><span class="show-users-user-img"></span>&nbsp; Usuário</div></th>
-    <th><div class="home-th-gambi"><span class="show-users-email-img"></span>&nbsp; Email</div></th>
-    <th><div class="home-th-gambi"><span class="show-users-permission-img"></span>&nbsp; Permissão</span></th>
-    <th><div class="home-th-gambi"><span class="show-users-actions-img"></span>&nbsp; Visualizar</div></th>
+    <th><div class="home-th-gambi"><span class="table-one-img" style="background-image: url({{asset('imgs/show_users/user2.svg')}})"></span>&nbsp; Usuário</div></th>
+    <th class="hide-576"><div class="home-th-gambi"><span class="table-two-img" style="background-image: url({{asset('imgs/show_users/permission.svg')}})"></span>&nbsp; Email</div></th>
+    <th ><div class="home-th-gambi"><span class="table-three-img" style="background-image: url({{asset('imgs/show_users/view.svg')}})"></span>&nbsp; Permissão</span></th>
+    <th class="hide-768"><div class="home-th-gambi"><span class="table-for-img" style="background-image: url({{asset('imgs/show_users/email.svg')}})"></span>&nbsp; Visualizar</div></th>
     </tr>
         </thead>
         <tbody>
@@ -20,7 +20,7 @@
            
             <tr>
             <td><div class="home-th-gambi">{{$user->name}} </div></td>
-            <td><div class="home-th-gambi">{{$user->email}}</div></td>
+            <td class="hide-576"><div class="home-th-gambi">{{$user->email}}</div></td>
                 <td><div class="home-th-gambi">
                     
                         @if ($rule = UserRule::userContainRole($user))
@@ -35,7 +35,7 @@
                         $msg = 'Visualizar';
                     }
                 @endphp
-                <td><div class="home-th-gambi"> <a href="{{route("users.show",["user"=>$user->id])}}" class="show-users-view-{{$logged}}logged">{{$msg}}</a> </div></td>
+                <td class="hide-768"><div class="home-th-gambi "> <a href="{{route("users.show",["user"=>$user->id])}}" class="show-users-view-{{$logged}}logged">{{$msg}}</a> </div></td>
             </tr>
             @endforeach
         </tbody>

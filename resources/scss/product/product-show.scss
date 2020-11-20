@@ -276,10 +276,33 @@
 }
 
 
+.message-save-success-product {
+    position: absolute;
+    right: 70px;
+    top: 0;
+    color: #306D3E;
+    padding: 0 20px;
+    display: none;
 
-
-
- /// IMAGES
+}
+ @keyframes product-in-message-success {
+     from {
+         opacity: 0;
+     }
+     to {
+         opacity: 1;
+        
+     }
+ }
+ @keyframes product-out-message-success {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+       
+    }
+}
 
 
 
