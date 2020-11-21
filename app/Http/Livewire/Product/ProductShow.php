@@ -20,10 +20,13 @@ class ProductShow extends Component
     public $name;
     public $confirmAddCategory = false;
     public $categories;
+    public $optionCategory;
+
 
     protected $listeners = [
         'refresh' => '$refresh'
     ];
+
 
     protected $rules = ['productCost' => 'required'];
 
@@ -40,18 +43,29 @@ class ProductShow extends Component
         $this->amount = $this->product->amount;
         $this->description = $this->product->description;
         $this->name = $this->product->name;
-        
-      
 
     }
-    public function setNewName()
-    {
-        dd($this->name);
-    }
+    // public function setNewName()
+    // {
+    //     dd($this->name);
+    // }
 
-    public function addCategory($productId)
+    public function addCategory()
     {
+        $this->emit("refresh");
         $this->confirmAddCategory = true;
+        
+    }
+
+    public function addCategoryModal()
+    {
+        
+         $this->product->categories()->attach([$this->optionCategory]);    
+         $this->confirmAddCategory = false;
+         $this->emit("refresh");
+         dd($this->categories);
+       
+        
     }
 
 
@@ -64,14 +78,25 @@ class ProductShow extends Component
     public function show(Product $product)
     {
         $user = User::where("id",$product->user_id)->first();
-        // $categories = (new Category())->whereNoActualProduct(1)->get();
-        $categories = Category::whereHas('whereNoActualProduct', function($query) use($product) {
+  
             
-            return $query->where('product_id', '!=', $product->id);
-        })->get();
-       
+            $this->refreshCategory($product);
+            
         
-        return view('livewire.product.product-show-livewire',compact('product','user','categories'));
+        return view('livewire.product.product-show-livewire',['product' => $product,'user' => $user,'categories' => $this->categories]);
+    }
+
+    private function refreshCategory($product)
+    {
+        
+        $this->categories = Category::where(function($query) use($product) {
+                
+            foreach ($product->categories as $value) {
+                $query->where("name","!=",$value->name);
+            }
+            
+        })->get();
+        $this->emit("refresh");
     }
 
     public function save()
@@ -91,6 +116,7 @@ class ProductShow extends Component
                 'description' => $this->description,
                 'user_id' => Auth::user()->id,
             ]);
+            $this->emit("refresh"); 
 
     }
 }

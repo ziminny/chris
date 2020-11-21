@@ -18,7 +18,7 @@ class Category extends Model
 
 public function whereNoActualProduct()
 {
-    return $this->belongsToMany(Product::class,"categories_products");
+    return $this->belongsToMany(Product::class,"categories_products")->wherePivot("category_id","","");
 }
 }
 
