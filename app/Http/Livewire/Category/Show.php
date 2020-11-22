@@ -12,11 +12,48 @@ class Show extends Component
     public $confirmDeleteCategory = false;
     public $categoryId;
     public $display;
+    public $confirmEditCategory = false;
+    /**
+     *  Nome da categoria
+     */
+    public $categoria;
+
+
     public function render()
     {
         $categories = Category::all();
         return view('livewire.category.show',compact('categories'));
     }
+
+
+
+
+    public function editCategory($id)
+    {
+        $this->dispatchBrowserEvent('focus-input-edit');
+        $this->confirmEditCategory = true;
+        $this->display = 'block';
+        $this->categoryId = $id;
+        
+        $this->categoria = Category::where("id",$id)->first()->name;
+       
+        
+    }
+    public function editCategoryModal()
+    {
+        $this->validate([
+            'categoria' => 'required|unique:categories,name,'.$this->categoryId
+        ]);
+        Category::where("id",$this->categoryId)->update([
+            'name' => $this->categoria
+        ]);
+        $this->confirmEditCategory = false;
+    }
+
+
+
+
+
 
     public function deleteCategory($categoryId)
     {

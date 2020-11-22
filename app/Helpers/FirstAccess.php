@@ -7,7 +7,6 @@ use App\Models\User;
 use DB;
 use DomainException;
 use Illuminate\Support\Facades\Hash;
-use phpDocumentor\Reflection\DocBlock\Tags\Throws;
 
 class FirstAccess 
 {

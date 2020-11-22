@@ -19,16 +19,15 @@ class ProductShow extends Component
     public $description;
     public $name;
     public $confirmAddCategory = false;
-    public $categories;
-    public $optionCategory;
+    public $categorias;
 
 
+    /**
+     *  recarrega os dados na tela novamente
+     */
     protected $listeners = [
         'refresh' => '$refresh'
     ];
-
-
-    protected $rules = ['productCost' => 'required'];
 
     public function render()
     {
@@ -37,7 +36,6 @@ class ProductShow extends Component
 
     public function mount()
     {
-   
         $this->productSale =  number_format($this->product->sale_price,2,".","");
         $this->productCost = number_format($this->product->cost_price,2,".","");
         $this->amount = $this->product->amount;
@@ -45,30 +43,39 @@ class ProductShow extends Component
         $this->name = $this->product->name;
 
     }
-    // public function setNewName()
-    // {
-    //     dd($this->name);
-    // }
 
+    /**
+     *  abre o modal para adicionar uma nova categoria
+     */
     public function addCategory()
-    {
-        $this->emit("refresh");
+    {  
         $this->confirmAddCategory = true;
-        
+        $this->emit("refresh");      
     }
 
+    public function calcelAddCategory()
+    {
+        $this->confirmAddCategory = false;
+        $this->emit("refresh");
+    }
+
+    /**
+     *  modal para adicionar uma nova caregoria
+     */
     public function addCategoryModal()
     {
-        
-         $this->product->categories()->attach([$this->optionCategory]);    
+        $this->validate([
+            'categorias' => 'required'
+        ]);
+         $this->product->categories()->attach([$this->categorias]);    
          $this->confirmAddCategory = false;
-         $this->emit("refresh");
-         dd($this->categories);
-       
-        
+         $this->categorias = "";
+         $this->emit("refresh");   
     }
 
-
+    /**
+     *  remove uma uma categoria
+     */
     public function removeCategory($id)
     {
         $this->product->categories()->detach($id);
@@ -78,27 +85,12 @@ class ProductShow extends Component
     public function show(Product $product)
     {
         $user = User::where("id",$product->user_id)->first();
-  
-            
-            $this->refreshCategory($product);
-            
-        
-        return view('livewire.product.product-show-livewire',['product' => $product,'user' => $user,'categories' => $this->categories]);
+        return view('livewire.product.product-show-livewire',['product' => $product,'user' => $user]);
     }
 
-    private function refreshCategory($product)
-    {
-        
-        $this->categories = Category::where(function($query) use($product) {
-                
-            foreach ($product->categories as $value) {
-                $query->where("name","!=",$value->name);
-            }
-            
-        })->get();
-        $this->emit("refresh");
-    }
-
+    /**
+     *  salva os dados 
+     */
     public function save()
     {
         $this->validate([
@@ -116,7 +108,5 @@ class ProductShow extends Component
                 'description' => $this->description,
                 'user_id' => Auth::user()->id,
             ]);
-            $this->emit("refresh"); 
-
     }
 }

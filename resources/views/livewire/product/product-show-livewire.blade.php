@@ -7,7 +7,7 @@
 {{-- {{dd($user->profile_photo_path)}} --}}
 @section('content-all')
 
-@livewire('product.product-show',['product' => $product, 'user' => $user,'categories' => $categories]);
+@livewire('product.product-show',['product' => $product, 'user' => $user]);
 
    
 @endsection

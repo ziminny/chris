@@ -24,3 +24,12 @@
     font-size: 13px;
 }
 
+.input-category-modal-edit {
+    width: 80%;
+    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.5);
+    letter-spacing: 0.05rem;
+    &:focus {
+        outline: none;
+    }
+}
+
