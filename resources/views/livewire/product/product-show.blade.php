@@ -80,7 +80,7 @@
               <label for="" class="product-label"><div>Categorias :</div></label> 
               <div class="container-product-category-array">
                 @foreach ($product->categories as $category)
-              <span class="category-name"><span>#{{$category->name}}</span> <a class="remove-category-data remove-category" title="Remover categoria"  data-id="{{$category->id}}" wire:click='removeCategory({{$category->id}})'><i class="far fa-times-circle" ></i></a></span>
+              <span class="category-name"><span>#{{$category->name}}</span> <a class="remove-category-data remove-category" title="Remover categoria" wire:click='removeCategory({{$category->id}})'><i class="far fa-times-circle" ></i></a></span>
               @endforeach
               <span class="category-add"><span wire:click='addCategory'><i class="fas fa-plus"></i><a title="Adicionar nova categoria"> Nova</a></span>
               </div>
@@ -149,8 +149,6 @@
         }, 1500);
         
       })
-
-
 
   </script>
       

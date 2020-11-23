@@ -22,6 +22,7 @@ class ProductShow extends Component
     public $categorias;
 
 
+
     /**
      *  recarrega os dados na tela novamente
      */
@@ -68,22 +69,32 @@ class ProductShow extends Component
             'categorias' => 'required'
         ]);
          $this->product->categories()->attach([$this->categorias]);    
-         $this->confirmAddCategory = false;
+         
          $this->categorias = "";
          $this->emit("refresh");   
+         $this->confirmAddCategory = false;
     }
 
     /**
-     *  remove uma uma categoria
+     *  remove uma categoria
      */
     public function removeCategory($id)
     {
-        $this->product->categories()->detach($id);
-        $this->emit("refresh"); 
+        dd($this->product->categories());
+       
+        $this->product->categories()->detach([$id]);
+    
+
+        $this->emit("refresh");
+        
+         
     }
+
+
 
     public function show(Product $product)
     {
+        $this->product = $product;
         $user = User::where("id",$product->user_id)->first();
         return view('livewire.product.product-show-livewire',['product' => $product,'user' => $user]);
     }
