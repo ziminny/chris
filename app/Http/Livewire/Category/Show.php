@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
+use DB;
 
 class Show extends Component
 {
@@ -13,17 +14,29 @@ class Show extends Component
     public $categoryId;
     public $display;
     public $confirmEditCategory = false;
+    public $search;
     /**
      *  Nome da categoria
      */
     public $categoria;
 
+    protected $listeners = [
+        'shc' => 'search'
+    ];
 
+    public function search($arg)
+    {
+        $this->search = $arg;
+        $this->display = 'block';
+    }
     public function render()
     {
-        $categories = Category::all();
+        $categories = Category::where("name",'like','%'.$this->search.'%')
+            ->get();
         return view('livewire.category.show',compact('categories'));
     }
+
+
 
 
 

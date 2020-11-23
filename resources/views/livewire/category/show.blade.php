@@ -8,13 +8,7 @@
         </x-slot>
     
         <x-slot name="content">
-              Tem certeza que desesa deletar essa categoria ?
-                @if (session()->has("errorDeleteCategory"))
-                 <div>
-                    {{session('errorDeleteCategory')}}
-                 </div>
-                 @endif    
-               
+              Tem certeza que desesa deletar essa categoria ?           
         </x-slot>
         
         <x-slot name="footer">
@@ -36,7 +30,7 @@
         </x-slot>
     
         <x-slot name="content">
-            {{ __('Tem ccerteza que deseja mudar o nome dessa categoria ?') }}
+            {{ __('Tem certeza que deseja mudar o nome dessa categoria ?') }}
     
             <div class="mt-4">
             <input type="text" wire:model='categoria' value="{{$categoria}}" class="input-category-modal-edit">
