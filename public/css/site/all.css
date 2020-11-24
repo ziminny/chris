@@ -125,14 +125,14 @@
 }
 
 .img-chart {
-  background-image: url(/images/chart.svg?21426ffa8579acb5dc097d35cab99fa6);
+  background-image: url(/images/chart.svg?7a34eab6ff1560f5b91a008828e81af9);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 
 .img-sale {
-  background-image: url(/images/sale.svg?baced2d0ee129c44a9c2b0f647cd8ccd);
+  background-image: url(/images/sale.svg?8b183711e59d7669123c8df83efb76f2);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -1292,6 +1292,10 @@ small.message-error {
 
 .input-category-modal-edit:focus {
   outline: none;
+}
+
+.table-categories {
+  margin-bottom: 15px;
 }
 
 .show-mobile-search {

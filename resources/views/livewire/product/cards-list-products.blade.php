@@ -1,65 +1,59 @@
 <div class="products-m-container">  
 
-
-    
-
-<div class="container-products-dynamic" style="overflow: none">  
-    
-
-    @livewire('product.product-search')
-    @if ($products->count() > 0)
-    @foreach ($products as $product)
+        <div class="container-products-dynamic" style="overflow: none">  
         
-   
-<div class="product-card">
-         <div class="products-card-left-1">
+            @livewire('product.product-search')
+
+            @if ($products->count() > 0)
+
+                @foreach ($products as $product)
             
-         </div>
- 
-         <div class="products-card-right">
-         <div class="product-title"><span class="name-product">{{$product->name}} </span><a href="{{route('products.show',$product)}}" class="product-view"><i class="far fa-eye"></i></a></div>
-             <div class="product-body">
-             <span><span>Custo:</span> <span class="teste">R$-{{$product->sale_price}}</span></span>
-                    <span><span>Venda:</span> <span>R$-{{$product->cost_price}}</span></span>
-                    <span><span>Lucro:</span> <span>R$-{{$product->sale_price - $product->cost_price}}</span></span>
-                    <span><span>Margem:</span> <span>105%</span></span>
-               
-             </div>
-             <div class="product-footer">
-                 @php
-                     $i = 0;
-                 @endphp
-                
-                 @foreach ($product->categories as $category)
-                 
-                     @if ($i<3)
-                     <span>#{{$category->name}}</span>
-                     @endif
-                     @php
-                         $i++;
-                     @endphp
-                 @endforeach
-                
-                 
-             </div>
-         </div>
-        
-     </div>
- 
-     @endforeach
-     @else
-     <div class= "search-empty-products">
-         <span>Sua busca nao retornou nenhum produto ou vocẽ não tem produdo cadastrado !</span>
-     
-     </div>
-     @endif
-     <div class="m-links-products">
-         {{$products->links()}}
-     </div>
-    
- </div>
+                    <div class="product-card">
+                            <div class="products-card-left-1"></div>
+                    
+                            <div class="products-card-right">
+                                    <div class="product-title">
+                                        <span class="name-product">{{$product->name}} </span>
+                                        <a href="{{route('products.show',$product)}}" class="product-view"><i class="far fa-eye"></i></a>
+                                    </div>
 
+                                    <div class="product-body">
+                                        <span><span>Custo:</span> <span class="teste">R$-{{$product->sale_price}}</span></span>
+                                        <span><span>Venda:</span> <span>R$-{{$product->cost_price}}</span></span>
+                                        <span><span>Lucro:</span> <span>R$-{{$product->sale_price - $product->cost_price}}</span></span>
+                                        <span><span>Margem:</span> <span>105%</span></span> 
+                                    </div>
 
+                                    <div class="product-footer">
+
+                                            @php
+                                                $i = 0;
+                                            @endphp
+                                            
+                                            @foreach ($product->categories as $category)
+                                                @if ($i<3)
+                                                    <span>#{{$category->name}}</span>
+                                                @endif
+                                                @php
+                                                    $i++;
+                                                @endphp
+                                            @endforeach
+                                        
+                                    </div>
+                            </div>   
+                    </div>
+            
+                @endforeach
+            @else
+            <div class= "search-empty-products">
+                <span>Sua busca nao retornou nenhum produto ou vocẽ não tem produdo cadastrado !</span>
+            
+            </div>
+            @endif
+            <div class="m-links-products">
+                {{$products->links()}}
+            </div>    
+        </div>
 </div>
 
 

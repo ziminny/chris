@@ -6,6 +6,14 @@
         </div>
     </form>
 <a class="search-a" @if (isset($add))
-    wire:click='{{ $add }}' @else
- href="{{route($route)}}" @endif> <button class="search-user-btn"><i class="fas fa-plus"></i><span>{{$btnAction}}</span></button></a>
+        wire:click='{{ $add }}' 
+    @else
+        href="{{route($route)}}" 
+    @endif
+> 
+    <button class="search-user-btn">
+        <i class="fas fa-plus"></i>
+        <span>{{$btnAction}}</span>
+    </button>
+</a>
 </div>

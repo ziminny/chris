@@ -7,88 +7,66 @@ use App\Models\Product;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 use DB;
+use Livewire\WithPagination;
 
 class Show extends Component
 {
-    public $confirmDeleteCategory = false;
-    public $categoryId;
-    public $display;
-    public $confirmEditCategory = false;
-    public $search;
+
+
     /**
-     *  Nome da categoria
+    *  Preciso segurar a tela aqui p/ nao mudar p/ produtos que é o estado inicial
+    * 
+    *  @var string
+    */
+    public $display;
+
+    /**
+     *  Captura campo de busca da classe Show
+     * 
+     *  @var string
      */
-    public $categoria;
-
+    public $search;
+    
+    /**
+     *  Eventos
+     * 
+     *  @var array
+     */
     protected $listeners = [
+        // sch foi enviado da classe Show
         'shc' => 'search', 
-        'refresh' => '$refresh'
+        'refreshShow' => 'refresh'
     ];
-
+    
+    /**
+     *  Sempre que o usuário digitar algo atribuo a variavel search
+     */
     public function search($arg)
     {
         $this->search = $arg;
+        // Seguro block para nao ir p/ none
         $this->display = 'block';
     }
+
+    
     public function render()
     {
+
         $categories = Category::where("name",'like','%'.$this->search.'%')
             ->get();
         return view('livewire.category.show',compact('categories'));
     }
 
 
-    public function calcelModalEdit()
+    
+    /**
+     *  Recarrega a pagina
+     */
+    public function refresh()
     {
-        $this->confirmEditCategory = false;
-        $this->emit("refresh");
-        $this->resetValidation();
+        $this->emit('$refresh');
+        $this->display = "block";
     }
 
 
-
-    public function editCategory($id)
-    {
-        $this->dispatchBrowserEvent('focus-input-edit');
-        $this->confirmEditCategory = true;
-        $this->display = 'block';
-        $this->categoryId = $id;
-        
-        $this->categoria = Category::where("id",$id)->first()->name;
-       
-        
-    }
-    public function editCategoryModal()
-    {
-        $this->validate([
-            'categoria' => 'required|unique:categories,name,'.$this->categoryId
-        ]);
-        Category::where("id",$this->categoryId)->update([
-            'name' => $this->categoria
-        ]);
-        $this->confirmEditCategory = false;
-    }
-
-
-
-
-
-
-    public function deleteCategory($categoryId)
-    {
-        $this->confirmDeleteCategory = true;
-        $this->categoryId = $categoryId;
-        $this->display = 'block';
-        
-
-    }
-
-    public function confirmDeleteCategory()
-    {
-
-       Category::destroy([
-           'id' => $this->categoryId
-       ]);
-    $this->confirmDeleteCategory = false;
-    }
 }

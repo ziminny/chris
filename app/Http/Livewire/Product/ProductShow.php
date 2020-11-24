@@ -101,6 +101,16 @@ class ProductShow extends Component
         return view('livewire.product.product-show-livewire',['product' => $product,'user' => $user]);
     }
 
+    public function updated()
+    {
+        $this->validate([
+            'productCost' => 'required|numeric',
+            'productSale' => 'required|numeric',
+            'amount' => 'required|integer',
+            'name' => 'required'
+            ]);
+    }
+
     /**
      *  salva os dados 
      */
@@ -121,5 +131,7 @@ class ProductShow extends Component
                 'description' => $this->description,
                 'user_id' => Auth::user()->id,
             ]);
+            $this->dispatchBrowserEvent("save-product");
+            $this->emit("refresh");
     }
 }
