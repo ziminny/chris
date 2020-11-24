@@ -12,25 +12,25 @@
             </div>
         
             <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Preço de custo') }}" />
-                <x-jet-input id="email" wire:model='costPrive' class="block mt-1 w-full" type="email"  />
-                @error('email')
+                <x-jet-label for="costPrice" value="{{ __('Preço de custo') }}" />
+                <x-jet-input id="costPrive" wire:model='costPrice' class="block mt-1 w-full" type="text"  />
+                @error('costPrice')
                 <small class="message-error">{{$message}}</small>
             @enderror
             </div>
         
             <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Preço de venda') }}" />
-                <x-jet-input id="password" wire:model='salePrice' class="block mt-1 w-full" type="text"  />
-                @error('password')
+                <x-jet-label for="salePrice" value="{{ __('Preço de venda') }}" />
+                <x-jet-input id="salePrice" wire:model='salePrice' class="block mt-1 w-full" type="text"  />
+                @error('salePrice')
                     <small class="message-error">{{$message}}</small>
                 @enderror
             </div>
         
             <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Quantidade') }}" />
-                <x-jet-input id="password" wire:model='amount' class="block mt-1 w-full" type="text"  />
-                @error('password')
+                <x-jet-label for="amount" value="{{ __('Quantidade') }}" />
+                <x-jet-input id="amount" wire:model='amount' class="block mt-1 w-full" type="text"  />
+                @error('amount')
                     <small class="message-error">{{$message}}</small>
                 @enderror
             </div>
@@ -45,9 +45,9 @@
         </div>
 
         <div class="mt-4 w-full">
-            <x-jet-label for="password" value="{{ __('Imagens') }}" />
+            <x-jet-label for="imagens" value="{{ __('Imagens') }}" />
             <div>
-                <label><input type="file" multiple style="display: none">Click aqui para adicionar as imagens</label>
+                <label><input id="imagens" type="file" multiple style="display: none" wire:model='images'>Click aqui para adicionar as imagens</label>
             </div>
         </div>
     
