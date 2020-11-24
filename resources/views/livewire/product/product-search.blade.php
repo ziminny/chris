@@ -1,3 +1,3 @@
 
-    @include('components.search',['target' => 'searchproduct' , 'route' => 'users.create','btnAction' => 'Adicionar'])
+    @include('components.search',['target' => 'searchproduct' , 'route' => 'products.create','btnAction' => 'Adicionar'])
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Helpers\FirstAccess;
+use App\Http\Livewire\Product\Create;
 use App\Http\Livewire\Product\HomeProducts;
 use App\Http\Livewire\Product\ProductShow;
 use App\Http\Livewire\Product\ShowUserProduct;
@@ -32,7 +33,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::group(['middleware' => 'inactive'], function () {
     
-        // Users Route
+        // Users Routes
     Route::group(
         ['middleware' => ['auth','is-admin'] , // Middleware ,Só o admin pode acecssar a tela de usuarios
             'prefix' => 'users' ,  // Prefixo da url
@@ -43,7 +44,7 @@ Route::group(['middleware' => 'inactive'], function () {
                 Route::get("create",[UserFormCreate::class,"create"])->name("create");
 
     });
-
+    // Products Routes
     Route::group(
         ['middleware' => ['auth'] ,
          'prefix' => 'products',
@@ -51,8 +52,7 @@ Route::group(['middleware' => 'inactive'], function () {
         ], function () {
               Route::get('/',[HomeProducts::class,"index"])->name("index");
               Route::get("{product}/show",[ProductShow::class,'show'])->name("show");
-        
-            
+              Route::get("create",[Create::class,"create"])->name("create");   
     });
 
 });
