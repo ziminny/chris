@@ -21,7 +21,8 @@ class Show extends Component
     public $categoria;
 
     protected $listeners = [
-        'shc' => 'search'
+        'shc' => 'search', 
+        'refresh' => '$refresh'
     ];
 
     public function search($arg)
@@ -37,7 +38,12 @@ class Show extends Component
     }
 
 
-
+    public function calcelModalEdit()
+    {
+        $this->confirmEditCategory = false;
+        $this->emit("refresh");
+        $this->resetValidation();
+    }
 
 
 

@@ -18,7 +18,7 @@
 
     <x-slot name="footer">
         <x-jet-secondary-button wire:click="calcelModal" wire:loading.attr="disabled">
-            {{ __('Cancelar') }}
+            {{ __('Cancelard') }}
         </x-jet-secondary-button>
 
         <x-jet-danger-button class="ml-2" wire:click="addCategoryModal" wire:loading.attr="disabled">

@@ -12,7 +12,7 @@ class Search extends Component
     public $categoria;
 
     protected $listeners = [
-        'searchCategory' => 'search'
+        'searchCategory' => 'search','refresh' => '$refresh'
     ];
 
     public function addCategoryModal()
@@ -31,7 +31,10 @@ class Search extends Component
     public function calcelModal()
     {
         $this->categoria = "";
-        $this->showModalCategory = false; 
+        $this->showModalCategory = false;
+        $this->emit("refresh");
+        $this->resetValidation();
+         
         
     }
 

@@ -82,7 +82,7 @@
                 @foreach ($product->categories as $category)
               <span class="category-name"><span>#{{$category->name}}</span> <a class="remove-category-data remove-category" title="Remover categoria" wire:click='removeCategory({{$category->id}})'><i class="far fa-times-circle" ></i></a></span>
               @endforeach
-              <span class="category-add"><span wire:click='addCategory'><i class="fas fa-plus"></i><a title="Adicionar nova categoria"> Nova</a></span>
+              <span class="category-add"><button wire:click='addCategory'><i class="fas fa-plus"></i><a title="Adicionar nova categoria"> Nova</a></button>
               </div>
           </div>        
         <div class="product-description"><label for="" class="product-label"><div>Descrição :</div> </label>

@@ -12,7 +12,7 @@
         </x-slot>
         
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('confirmDeleteCategory')" wire:loading.attr="disabled">
+            <x-jet-secondary-button wire:click="calcelModalEdit" wire:loading.attr="disabled">
                 Cancelar
             </x-jet-secondary-button>
     
@@ -41,7 +41,7 @@
         </x-slot>
     
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('confirmEditCategory')" wire:loading.attr="disabled">
+            <x-jet-secondary-button wire:click="calcelModalEdit" wire:loading.attr="disabled">
                 {{ __('Cancelar') }}
             </x-jet-secondary-button>
     

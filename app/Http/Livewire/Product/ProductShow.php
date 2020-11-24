@@ -57,7 +57,9 @@ class ProductShow extends Component
     public function calcelAddCategory()
     {
         $this->confirmAddCategory = false;
+        
         $this->emit("refresh");
+        $this->resetValidation();
     }
 
     /**
@@ -80,7 +82,7 @@ class ProductShow extends Component
      */
     public function removeCategory($id)
     {
-        dd($this->product->categories());
+       // dd($this->product->categories());
        
         $this->product->categories()->detach([$id]);
     
