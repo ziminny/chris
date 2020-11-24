@@ -2,11 +2,11 @@
     @include('components.search',['target' => 'searchCategory' , 'route' => '','btnAction' => 'Adicionar' , 'add' => 'addCategory'])
 <x-jet-dialog-modal wire:model="showModalCategory">
     <x-slot name="title">
-        {{ __('Editar categoria') }}
+        {{ __('Adicionar nova categoria') }}
     </x-slot>
 
     <x-slot name="content">
-        {{ __('Tem certeza que deseja mudar o nome dessa categoria ?') }}
+        {{ __('Digite o nome da nova cateoria !') }}
 
         <div class="mt-4">
         <input type="text" wire:model='categoria' class="input-category-modal-edit" id="input-category">
