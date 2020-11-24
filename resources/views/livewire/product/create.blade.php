@@ -1,5 +1,5 @@
 
-    <div class="form-create-new-user">
+    <div class="form-create-new-user" style="margin-bottom: 15px">
         <form wire:submit.prevent='store' enctype="multipart/form-data">
        
             {{-- <x-jet-validation-errors class="mb-4" /> --}}
