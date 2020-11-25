@@ -49,6 +49,9 @@
             <div>
                 <label><input id="imagens" type="file" multiple style="display: none" wire:model='images'>Click aqui para adicionar as imagens</label>
             </div>
+            @error('images.*')
+                <small class="message-error">{{$message}}</small>
+             @enderror
         </div>
     
         

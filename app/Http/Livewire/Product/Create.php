@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Product;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Models\Product;
+use DB;
 
 class Create extends Component
 {
@@ -14,6 +16,21 @@ class Create extends Component
     public $description;
     public $amount;
     public $images = [];
+
+    protected $rules = [
+        'name' => 'required|min:2',
+        'salePrice' => 'required|numeric',
+        'costPrice' => 'required|numeric',
+        'amount' => 'required|numeric',
+        'images.*' => 'image'
+    ];
+
+    protected $validationAttributes = [
+        'salePrice' => 'preço de venda',
+        'costPrice'=> 'preço de custo',
+        'amount' => 'quantidade',
+        'images.*' => 'imagens'
+    ];
 
     use WithFileUploads;
 
@@ -27,8 +44,39 @@ class Create extends Component
         return view('livewire.product.create-livewire');
     }
 
+    public function updated()
+    {
+        $this->validate();  
+    }
+
     public function store()
     {
-        dd($this->images);
+
+
+        $this->validate();
+       DB::transaction(function () {
+        $product = Product::create([
+            'name' => $this->name,
+            'sale_price' => $this->salePrice,
+            'cost_price' => $this->costPrice,
+            'description' => $this->description,
+            'amount' => $this->amount
+        ]);
+
+    
+        if($this->images){
+            foreach ($this->images as $key => $image) {
+                $arrayImages = $image->store('products','public');
+                $product->images()->create(['name' => $arrayImages]);
+            }
+            
+        }
+
+        session()->flash("message","Produto cadastrado com sucesso !");
+        return redirect()->route("products.index");
+
+        
+       });
+      
     }
 }
