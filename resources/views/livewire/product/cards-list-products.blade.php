@@ -1,22 +1,24 @@
 <div class="products-m-container">  
-
-        <div class="container-products-dynamic" style="overflow: none">  
+    @include('messages.success')
+        <div class="container-products-dynamic" style="overflow: none; padding-top: 10px">  
         
             @livewire('product.product-search')
 
             @if ($products->count() > 0)
 
                 @foreach ($products as $product)
-            
+                {{-- {{dd($product->images->contains("id",1))}} --}}
+                
+
                     <div class="product-card">
-                            <div class="products-card-left-1"></div>
+                    <div class="products-card-left" style="background-image: url('{{asset(EmptyImage::getImage($product))}}')"></div>
                     
                             <div class="products-card-right">
                                     <div class="product-title">
                                         <span class="name-product">{{$product->name}} </span>
                                         <a href="{{route('products.show',$product)}}" class="product-view"><i class="far fa-eye"></i></a>
                                     </div>
-
+                                        
                                     <div class="product-body">
                                         <span><span>Custo:</span> <span class="teste">R$-{{$product->sale_price}}</span></span>
                                         <span><span>Venda:</span> <span>R$-{{$product->cost_price}}</span></span>

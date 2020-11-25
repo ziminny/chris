@@ -231,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'UserRule' => \App\Helpers\UserRole::class,
         'ContainProduct' => \App\Helpers\Category\CategoryNotExistsInProduct::class,
+        'EmptyImage' => \App\Helpers\Images\EmptyImage::class,
         
 
     ],

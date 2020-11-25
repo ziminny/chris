@@ -221,38 +221,78 @@
                     }
                 }
         }
+        .add-images-product {
+            border-radius: 5px;
+            background-color: white;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 5px 5px 5px ;
+            .btn-new-image {
+                background-color: #374151;
+                color: white;
+                border-radius: 5px;
+                padding:5px 10px;
+                &:focus {
+                    outline: none;
+                }
+                .btn-add {
+                    cursor: pointer;
+                    i {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
 
         .container-body {
-            height: 600px;
+            
             background-color: white;
             border-radius: 10px;
             padding: 10px; 
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+
+
+            .border-images-container {
+                border-radius: 10px;
+                border: 1px solid rgba($color: #ccc, $alpha: 0.9);
+                padding: 10px;
+                margin:  10px;
+              
+            .array-images {
+                //border: 1px solid red;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            
             
             .product-card {
-                flex: 1 1 300px;
                 
-               
+                border: 1px solid rgba($color: #ccc, $alpha: 1.0);
+                border-radius: 10px;
                 margin: 5px;
                 
                 .product-image {
-                    width: 100%;
-                    min-height: 300px;
-                
+                    width: 200px;
+                    height: 200px;
+                    //border: 1px solid blue;
                     background-position: center;
-                    background-size: contain;
+                    background-size: cover;
                     background-repeat: no-repeat;
+                    border-radius: 10px 10px 0 0;
          
                 }
                 .product-delete-update {
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    margin: 5px auto;
                     .product-delete-image {
                         color:white ;
                         background-color: #A30000;
-                        width: 22px;
+                        width: 70px;
                         height: 22px;
                         display: flex;
                         font-size: 14px;
@@ -265,18 +305,39 @@
                     .product-edit-image {
                         color:white ;
                         background-color: #F5B700;
-                        width: 22px;
+                        width: 70px;
                         height: 22px;
                         display: flex;
                         font-size: 14px;
                         justify-content: center;
                         align-items: center;
                         border-radius: 5px;
+                        label {
+                            cursor: pointer;
+                        }
 
                     }
                 }
             }
         }
+    }
+    }
+    }
+}
+
+.margin-product-list {
+    margin-left: 7px;
+}
+
+.select-category-add {
+    min-width: 150px;
+    padding: 2px;
+    border-radius: 5px;
+    &:focus {
+        outline: none;
+    }
+    option {
+
     }
 }
 
@@ -290,6 +351,11 @@
     display: none;
 
 }
+
+
+
+
+
  @keyframes product-in-message-success {
      from {
          opacity: 0;
@@ -309,6 +375,33 @@
     }
 }
 
+@media screen and (max-width:513px) {
+
+    .container-body {
+            
+        background-color: red;
+
+
+        .border-images-container {
+
+          
+        .array-images {
+
+        
+        
+        .product-card {
+            
+            width: 100%;
+
+            
+            .product-image {
+                width: 100%  !important;
+                height: 300px !important;
+
+     
+          }}}}  }
+    }
+
 
 
  @media screen and (max-width:836px) {
@@ -319,6 +412,8 @@
          }
      }
 
+
+
      .product-price-cost , .product-price-sale  , .product-price-profit , .product-amount , .product-margin{
   
         width: 100% !important;
@@ -327,11 +422,11 @@
         input {
            
         }
-
-
- }
-
- @media screen and (max-width:836px) {
-
     }
- }
+
+
+
+
+}
+
+

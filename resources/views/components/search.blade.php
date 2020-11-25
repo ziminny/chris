@@ -1,4 +1,4 @@
-<div class="show-mobile-search">
+<div class="show-mobile-search margin-product-list">
 <form  method="POST" class="form-search-mobile">
     <div class="show-img-close-mobile"><img src="{{asset("imgs/show_users/search-mobile.svg")}}" alt=""></div>
         <div class="show-input-search-mobile">

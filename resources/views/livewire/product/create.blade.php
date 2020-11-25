@@ -42,20 +42,37 @@
             <div >
                 <textarea wire:model='description' rows="5" class="product-description-create block mt-1 w-full" rows="3"></textarea>
           </div>
+          @error('description')
+          <small class="message-error">{{$message}}</small>
+       @enderror
         </div>
 
         <div class="mt-4 w-full">
             <x-jet-label for="imagens" value="{{ __('Imagens') }}" />
-            <div>
-                <label><input id="imagens" type="file" multiple style="display: none" wire:model='images'>Click aqui para adicionar as imagens</label>
+            <div class="div-add-image-product">
+                <div class="label-add-image-product">
+                    <label class="zm-hand"><input id="imagens" type="file" multiple style="display: none" wire:model='images'>
+                        <span class="hide-576 ">Click aqui para </span><span class="upper-576">a</span>dicionar <span class="hide-576">as</span> imagens
+                    </label>
+                </div>    
             </div>
             @error('images.*')
                 <small class="message-error">{{$message}}</small>
              @enderror
         </div>
+
+        <div class="mt-4 w-full flex flex-wrap">
+            @if ($images)
+                @foreach ($images as $image)
+                     <div class="mr-3 mb-4">
+                        <img src="{{ $image->temporaryUrl() }}" class="images-preview-create-product">
+                     </div>
+                @endforeach
+            @endif
+        </div>
     
         
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-end">
         
                 {{-- <button>Cadastrar</button> --}}
                 <x-jet-button class="ml-4">

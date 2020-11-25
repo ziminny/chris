@@ -92,15 +92,15 @@
                 background-color: #F4F5F7;
                 border-radius: 5px;
                 width: 100%;
-                    .products-card-left {
+                    // .products-card-left {
                     
-                        width: 40%;
-                        border-right: 1px solid rgba($color: #ccc, $alpha: 0.5);
-                        background-image: url("../../../public/imgs/products/card.jpg");
-                        background-position: center;
-                        background-repeat: no-repeat;
-                        background-size: cover;
-                    }
+                    //     width: 40%;
+                    //     border-right: 1px solid rgba($color: #ccc, $alpha: 0.5);
+                    //     background-image: url("../../../public/imgs/products/card.jpg");
+                    //     background-position: center;
+                    //     background-repeat: no-repeat;
+                    //     background-size: cover;
+                    // }
       
 
             .products-card-right {
@@ -224,40 +224,41 @@
 
 
 //temporario
-.products-card-left-1 {
+.products-card-left {
            
     width: 40%;
     border-right: 1px solid rgba($color: #FECDAA, $alpha: 0.5);
-    background-image: url("../../../public/imgs/products/card.jpg");
+     //background-image: url("../../../public/imgs/products/card.jpg");
+     //background-image: url('../../../public/products/aiJzSz4n4Gzfyv2Gt0WmvP1d4s7g72NUPw7xpCb8.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.products-card-left-2 {
+// .products-card-left-2 {
    
-    width: 40%;
-    border-right: 1px solid rgba($color: #ccc, $alpha: 0.5);
-    background-image: url("../../../public/imgs/products/tenis.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.products-card-left-3 {
+//     width: 40%;
+//     border-right: 1px solid rgba($color: #ccc, $alpha: 0.5);
+//     background-image: url("../../../public/imgs/products/tenis.jpg");
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+// }
+// .products-card-left-3 {
    
-    width: 40%;
-    border-right: 1px solid rgba($color: #ccc, $alpha: 0.5);
-    background-image: url("../../../public/imgs/products/calca.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+//     width: 40%;
+//     border-right: 1px solid rgba($color: #ccc, $alpha: 0.5);
+//     background-image: url("../../../public/imgs/products/calca.jpg");
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+// }
 
 @media screen and (max-width:356px) {
     .container-products-dynamic { 
             .product-card{
                 min-width: 220px;
                 flex-direction: column;
-                  .products-card-left, .products-card-left-3 , .products-card-left-1 , .products-card-left-2  { 
+                  .products-card-left  { 
                         width: 100%;
                         height: 100px;
                         background-position: center;

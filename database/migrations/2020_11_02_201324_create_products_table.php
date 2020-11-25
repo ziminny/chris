@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->text("description");
             $table->float("sale_price");
             $table->float("cost_price");
-            $table->float("amount");
+            $table->integer("amount");
             $table->unsignedBigInteger("user_id")->nullable();
             $table->foreign("user_id")->references("id")->on("users");
             $table->timestamps();

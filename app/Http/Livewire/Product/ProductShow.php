@@ -3,10 +3,14 @@
 namespace App\Http\Livewire\Product;
 
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+
 use Livewire\Component;
+use Livewire\WithFileUploads;
+use Storage;
 
 class ProductShow extends Component
 {
@@ -20,6 +24,10 @@ class ProductShow extends Component
     public $name;
     public $confirmAddCategory = false;
     public $categorias;
+    public $imageChange;
+    public $addImages;
+
+    use WithFileUploads;
 
 
 
@@ -133,5 +141,43 @@ class ProductShow extends Component
             ]);
             $this->dispatchBrowserEvent("save-product");
             $this->emit("refresh");
+    }
+
+    public function deleteImage($id)
+    {
+        $image = Image::findOrFail($id);
+        if(Storage::delete('public/'.$image->name))
+            $image->delete();
+        $this->emit("refresh");
+    }
+
+    public function editImage($id)
+    {
+        $image = Image::findOrFail($id);
+       
+        if(Storage::delete('public/'.$image->name)) {
+                $newImage = $this->imageChange->store("products","public");
+            $image->update([
+                    'name' => $newImage
+            ]);
+        }
+       $this->emit("refresh");
+    }
+
+    public function addNewImages($idProduct)
+    {
+
+              
+            foreach ($this->addImages as $image) {
+                $img = $image->store("products","public");
+                Image::create(
+                    [
+                        'name' => $img,
+                        'product_id' => $idProduct
+                    ]
+                );
+            }
+            $this->emit("refresh");
+       
     }
 }

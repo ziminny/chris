@@ -2,7 +2,7 @@
 
 @extends('layouts.base')
 @section('title')
-{{Breadcrumbs::render("products")}}
+{{Breadcrumbs::render("products.create")}}
 @endsection
 
 @section('content-all')

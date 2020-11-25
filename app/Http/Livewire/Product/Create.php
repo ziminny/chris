@@ -10,29 +10,81 @@ use DB;
 class Create extends Component
 {
 
+    /**
+    * necessário para adicionar fotos 
+    */
+    use WithFileUploads;
+    
+    /**
+    *  Nome do Produto
+    * 
+    *  @var string
+    */
     public $name;
+
+    /**
+    *  Preço de venda
+    * 
+    *  @var float
+    */
     public $salePrice;
+
+    /**
+    * Preço de custo 
+    * 
+    *  @var float
+    */
     public $costPrice;
+
+    /**
+    *  Descrição
+    * 
+    *  @var string
+    */
     public $description;
+
+    /**
+    *  Quantidade
+    * 
+    *  @var int
+    */
     public $amount;
+
+    /**
+     *  Imagens
+     * 
+     *  @var array
+     */
     public $images = [];
 
+    /**
+    *  Regras de validação 
+    *
+    *  @var array
+    */
     protected $rules = [
         'name' => 'required|min:2',
         'salePrice' => 'required|numeric',
         'costPrice' => 'required|numeric',
-        'amount' => 'required|numeric',
-        'images.*' => 'image'
+        'amount' => 'required|integer',
+        'description' => 'required',
+        'images.*' => 'image',
     ];
 
+    /**
+    *  Apelido dos atributos 
+    * 
+    *  @var array
+    */
     protected $validationAttributes = [
         'salePrice' => 'preço de venda',
         'costPrice'=> 'preço de custo',
         'amount' => 'quantidade',
-        'images.*' => 'imagens'
+        'description' => 'descrição',
+        'images.*' => 'imagens',
     ];
 
-    use WithFileUploads;
+
 
     public function render()
     {
@@ -44,39 +96,106 @@ class Create extends Component
         return view('livewire.product.create-livewire');
     }
 
-    public function updated()
+    /**
+    * Validação enquanto digita 
+    */
+    public function updatedName()
     {
-        $this->validate();  
+        $this->validate([
+            'name' => 'required|min:3'
+        ]);  
     }
 
+    /**
+    * Validação enquanto digita 
+    */
+    public function updatedSalePrice()
+    {
+        $this->validate([
+            'salePrice' => 'required|numeric'
+        ]);  
+    }
+
+    /**
+    * Validação enquanto digita 
+    */
+    public function updatedCostPrice()
+    {
+        $this->validate([
+            'costPrice' => 'required|numeric'
+        ]);  
+    }
+
+
+    /**
+    * Validação enquanto digita 
+    */
+    public function updatedAmount()
+    {
+        $this->validate([
+            'amount' => 'required|integer'
+        ]);  
+    }
+
+    /**
+    * Validação enquanto digita 
+    */
+    public function updateDescription()
+    {
+        $this->validate([
+            'description' => 'required|integer'
+        ]);  
+    }
+
+    /**
+    *  Cria o produto com as imagens
+    */
     public function store()
     {
+       $this->validate();
 
-
-        $this->validate();
        DB::transaction(function () {
-        $product = Product::create([
+            $product = $this->createProduct();
+            $product->images()->createMany($this->saveImageDisk());
+       });
+
+       session()->flash("message","Produto cadastrado com sucesso !");
+       return redirect()->route("products.index"); 
+    }
+
+    /**
+     *  @return Product
+     */
+    private function createProduct()
+    {
+        return Product::create([
             'name' => $this->name,
             'sale_price' => $this->salePrice,
             'cost_price' => $this->costPrice,
             'description' => $this->description,
-            'amount' => $this->amount
+            'amount' => $this->amount,
+            'user_id' => auth()->user()->id
         ]);
+    }
 
-    
+    /**
+    *  [
+    *    'name' => 'products/hdhshshdspdsdjksd.extensao,
+    *    'name' => 'products/dsdsdpkpdskdsdksk.extensao,
+    *  ] 
+    * 
+    * @return array 
+    */
+    private function saveImageDisk()
+    {
+        $arrayImages = [];
         if($this->images){
-            foreach ($this->images as $key => $image) {
-                $arrayImages = $image->store('products','public');
-                $product->images()->create(['name' => $arrayImages]);
-            }
-            
+            foreach ($this->images as $image) {
+                $arrayImages[] = [ 
+                      'name' => $image->store('products','public')
+                ];
+            }   
         }
-
-        session()->flash("message","Produto cadastrado com sucesso !");
-        return redirect()->route("products.index");
-
-        
-       });
-      
+        return $arrayImages;
     }
 }

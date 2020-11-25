@@ -6,3 +6,34 @@
             outline: none;
         }
 }
+
+.div-add-image-product {
+    margin-top: 10px;
+}
+.label-add-image-product {
+    background-color: #29313d;
+    color: #F9FAFA;
+    padding: 7px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 280px;
+    label {
+       
+    }
+}
+
+.zm-hand {
+    cursor: pointer;
+}
+.images-preview-create-product {
+    width: 50px;
+    height: 50px;
+}
+
+@media screen and (max-width:539px){
+    .div-add-image-product , .label-add-image-product   {
+        width: 100%;
+
+    } 
+}

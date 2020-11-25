@@ -15,7 +15,7 @@ Breadcrumbs::for('users', function ($trail) {
     $trail->push('Usuários', route('users.index'));
 });
 
-// Controle > Usuários > Cadastras usuário
+// Controle > Usuários > Cadastro de usuário
 Breadcrumbs::for('users.create', function ($trail) {
     $trail->parent('users');
     $trail->push('Cadasto de usuário', route('users.create'));
@@ -34,8 +34,14 @@ Breadcrumbs::for('products', function ($trail) {
     $trail->push('Produtos', route('products.index'));
 });
 
-// Controle > Usuários  [name] > [show]
+// Controle > Produtos  [name] > [show]
 Breadcrumbs::for('products.show', function ($trail,$product) {
     $trail->parent('products');
     $trail->push($product->name,route('products.show', ['product' => $product]));
+});
+
+// Controle > Produtos > Cadastro de produto
+Breadcrumbs::for('products.create', function ($trail) {
+    $trail->parent('products');
+    $trail->push('Cadastro de produto', route('products.create'));
 });

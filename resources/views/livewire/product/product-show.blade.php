@@ -11,7 +11,7 @@
 
           <div class="mt-4">
               <div>
-                <select wire:model='categorias'>
+                <select wire:model='categorias' class="select-category-add">
                   <option value="">Selecione</option>
                     @foreach (ContainProduct::get($product) as $category)
                       <option value="{{$category->id}}">{{$category->name}}</option>
@@ -129,49 +129,39 @@
               </div>
           </div>
       
+
+
           <div class="container-body">
-      
-                <div class="product-card">
-                      <div class="product-image" style="background-image: url({{asset('imgs/img1.webp')}})"></div>
-                      <div class="product-delete-update">
-                          <div class="product-delete-image">
-                              <form action="">
-                                  <button type="submit">
-                                      <i class="far fa-trash-alt"></i>
-                                  </button>
-                              </form>
-                          </div>
-                      <div class="product-edit-image"><form action=""><button type="submit"><i class="fas fa-pen"></i></button></form></div></div>
-                </div>
-            
-                <div class="product-card">
-                    <div class="product-image" style="background-image: url({{asset('imgs/img2.webp')}})"></div>
+
+              <div class="border-images-container">
+
+                <div class="add-images-product">
+                  <div>Imagens</div>
+                  <div class="btn-new-image"><label type="button" class="btn-add"><i class="fas fa-plus-circle"></i> adicionar <input type="file" wire:model='addImages' multiple hidden wire:change.debounce.500ms='addNewImages({{$product->id}})'></label></div>
+               </div>
+              
+    
+                <div class="array-images">
+                  @foreach ($product->images as $image)
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url({{asset('storage/'.$image->name)}})"></div>
                     <div class="product-delete-update">
-                      <div class="product-delete-image"><form action=""><button type="submit"><i class="far fa-trash-alt"></i></button></form></div>
-                      <div class="product-edit-image"><form action=""><button type="submit"><i class="fas fa-pen"></i></button></form></div></div>
+                        <div class="product-delete-image">
+                            <form action="">
+                                <button type="button" wire:click.defer='deleteImage({{$image->id}})'>
+                                    <i class="far fa-trash-alt"></i> deletar
+                                </button>
+                            </form>
+                        </div>
+                    <div class="product-edit-image"><label type="button"><i class="fas fa-pen"></i> alterar <input type="file" wire:model='imageChange' hidden wire:change.debounce.500ms='editImage({{$image->id}})'></label></div></div>
+              </div>
+                  @endforeach
                 </div>
-                <div class="product-card">
-                  <div class="product-image" style="background-image: url({{asset('imgs/img3.webp')}})"></div>
-                  <div class="product-delete-update">
-                    <div class="product-delete-image"><form action=""><button type="submit"><i class="far fa-trash-alt"></i></button></form></div>
-                    <div class="product-edit-image"><form action=""><button type="submit"><i class="fas fa-pen"></i></button></form></div></div>
-                </div>
-                <div class="product-card">
-                  <div class="product-image" style="background-image: url({{asset('imgs/img1.webp')}})"></div>
-                  <div class="product-delete-update">
-                    <div class="product-delete-image"><form action=""><button type="submit"><i class="far fa-trash-alt"></i></button></form></div>
-                    <div class="product-edit-image"><form action=""><button type="submit"><i class="fas fa-pen"></i></button></form></div></div>
-                </div>
-                <div class="product-card">
-                  <div class="product-image" style="background-image: url({{asset('imgs/img3.webp')}})"></div>
-                  <div class="product-delete-update">
-                    <div class="product-delete-image"><form action=""><button type="submit"><i class="far fa-trash-alt"></i></button></form></div>
-                    <div class="product-edit-image"><form action=""><button type="submit"><i class="fas fa-pen"></i></button></form></div></div>
-                </div>
-      
+
+              </div>
+
         </div>
-      
-      </form>
+    </form>
   
 
       
